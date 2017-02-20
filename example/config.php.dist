@@ -1,0 +1,126 @@
+<?php
+/**
+ * SocialConnect project
+ * @author: Patsura Dmitry https://github.com/ovr <talk@dmtry.me>
+ */
+
+return array(
+    'redirectUri' => 'http://localhost:8000/auth/cb',
+    'provider' => array(
+        'facebook' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array('email')
+        ),
+        'twitter' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'enabled' => false
+        ),
+        'google' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array(
+                'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'
+            )
+        ),
+        'paypal' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array(
+                'profile',
+                'email',
+                'address',
+                'phone',
+                'https://uri.paypal.com/services/paypalattributes'
+            )
+        ),
+        'vk' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array('email')
+        ),
+        'github' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+        ),
+        'instagram' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+        ),
+        'slack' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array(
+                'identity.basic',
+                'identity.email',
+                'identity.team',
+                'identity.avatar',
+            )
+        ),
+        'twitch' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array('user_read')
+        ),
+        'px500' => array(
+            'applicationId' => '',
+            'applicationSecret' => ''
+        ),
+        'bitbucket' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array('account')
+        ),
+        'amazon' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array('profile')
+        ),
+        'gitlab' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array('read_user')
+        ),
+        'vimeo' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array()
+        ),
+        'digital-ocean' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array()
+        ),
+        'yandex' => array(
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array()
+        ),
+        //http://api.mail.ru/sites/my/add
+        'mail-ru' => [
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array()
+        ],
+        //http://api.mail.ru/sites/my/add
+        'odnoklassniki' => [
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'applicationPublic' => '',
+            'scope' => array(
+                'GET_EMAIL'
+            )
+        ],
+        'steam' => [
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array()
+        ],
+        'tumblr' => [
+            'applicationId' => '',
+            'applicationSecret' => '',
+            'scope' => array()
+        ]
+    )
+);

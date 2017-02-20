@@ -1,0 +1,44 @@
+{
+    "name": "pixelpinplugins/pixelpin-auth-sc",
+    "description": "Social Connect Auth Component",
+    "keywords": [
+        "socialconnect",
+        "login",
+        "auth",
+        "oauth",
+        "openid-connect",
+        "pixelpin"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Patsura",
+            "email": "talk@dmtry.me"
+        },
+        {
+            "name": "Callum Brankin",
+            "email": "callum@pixelpin.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "ext-json": "*",
+        "pixelpinplugins/pixelpin-common-sc": "^0.1"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "~2.8.0",
+        "phpunit/phpunit": "~4.8.34"
+    },
+    "autoload": {
+        "psr-4": {
+            "SocialConnect\\": "src/"
+        }
+    },
+    "replace": {
+        "socialconnect/oauth1": "self.version",
+        "socialconnect/oauth2": "self.version",
+        "socialconnect/openid": "self.version",
+        "socialconnect/openid-connect": "self.version",
+        "socialconnect/provider": "self.version"
+    }
+}

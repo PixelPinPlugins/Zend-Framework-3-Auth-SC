@@ -1,0 +1,22 @@
+{
+    "name": "socialconnect/provider",
+    "description": "Base interfaces for implementation of Providers (OAuth1/OAuth2/OpenID/OpenConnect)",
+    "type": "library",
+    "require": {
+        "php": ">=5.5",
+        "socialconnect/common": "~0.7.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Patsura",
+            "email": "talk@dmtry.me"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "SocialConnect\\Provider\\": ""
+        }
+    }
+}
