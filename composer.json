@@ -35,9 +35,7 @@
         }
     },
     "replace": {
-        "socialconnect/oauth1": "self.version",
         "socialconnect/oauth2": "self.version",
-        "socialconnect/openid": "self.version",
         "socialconnect/openid-connect": "self.version",
         "socialconnect/provider": "self.version"
     }

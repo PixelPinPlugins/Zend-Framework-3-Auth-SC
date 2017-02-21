@@ -9,9 +9,7 @@ namespace SocialConnect\Auth;
 use LogicException;
 use SocialConnect\Provider\AbstractBaseProvider;
 use SocialConnect\Provider\Consumer;
-use SocialConnect\OAuth1;
 use SocialConnect\OAuth2;
-use SocialConnect\OpenID;
 use SocialConnect\OpenIDConnect;
 
 /**
@@ -24,28 +22,6 @@ class CollectionFactory implements FactoryInterface
      * @var array
      */
     protected $providers = [
-        // OAuth1
-        'twitter'       => OAuth1\Provider\Twitter::class,
-        'px500'         => OAuth1\Provider\Px500::class,
-        'tumblr'        => OAuth1\Provider\Tumblr::class,
-        // OAuth2
-        'facebook'      => OAuth2\Provider\Facebook::class,
-        'github'        => OAuth2\Provider\GitHub::class,
-        'instagram'     => OAuth2\Provider\Instagram::class,
-        'google'        => OAuth2\Provider\Google::class,
-        'vk'            => OAuth2\Provider\Vk::class,
-        'slack'         => OAuth2\Provider\Slack::class,
-        'twitch'        => OAuth2\Provider\Twitch::class,
-        'bitbucket'     => OAuth2\Provider\Bitbucket::class,
-        'amazon'        => OAuth2\Provider\Amazon::class,
-        'gitlab'        => OAuth2\Provider\GitLab::class,
-        'vimeo'         => OAuth2\Provider\Vimeo::class,
-        'digital-ocean' => OAuth2\Provider\DigitalOcean::class,
-        'yandex'        => OAuth2\Provider\Yandex::class,
-        'mail-ru'       => OAuth2\Provider\MailRu::class,
-        'odnoklassniki' => OAuth2\Provider\Odnoklassniki::class,
-        // OpenID
-        'steam'         => OpenID\Provider\Steam::class,
         'pixelpin'      => OpenIDConnect\Provider\PixelPin::class,
     ];
 

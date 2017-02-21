@@ -1,6 +1,6 @@
 {
     "name": "socialconnect/provider",
-    "description": "Base interfaces for implementation of Providers (OAuth1/OAuth2/OpenID/OpenConnect)",
+    "description": "Base interfaces for implementation of Providers (OAuth2/OpenConnect)",
     "type": "library",
     "require": {
         "php": ">=5.5",
