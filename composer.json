@@ -23,7 +23,7 @@
     "require": {
         "php": ">=5.5",
         "ext-json": "*",
-        "pixelpinplugins/pixelpin-common-sc": "^0.1"
+        "pixelpinplugins/pixelpin-common-sc": "^0.2"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "~2.8.0",
