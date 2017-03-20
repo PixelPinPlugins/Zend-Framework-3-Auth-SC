@@ -135,7 +135,9 @@ abstract class AbstractProvider extends AbstractBaseProvider
     public function getAccessToken($code)
     {
         if (!is_string($code)) {
-            throw new InvalidArgumentException('Parameter $code must be a string');
+            header('Location: http://'. $_SERVER['SERVER_NAME']);
+            die();
+            //throw new InvalidArgumentException('Parameter $code must be a string');
         }
 
         $response = $this->httpClient->fromRequest(
