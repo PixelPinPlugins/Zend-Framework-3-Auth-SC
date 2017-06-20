@@ -175,7 +175,7 @@ abstract class AbstractProvider extends AbstractBaseProvider
         }
 
         if ($state !== $parameters['state']) {
-            throw new InvalidState($state);
+            throw new InvalidState();
         }
 
         return $this->getAccessToken($parameters['code']);

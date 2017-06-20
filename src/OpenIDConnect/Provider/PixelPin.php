@@ -12,13 +12,11 @@ use SocialConnect\Provider\Exception\InvalidResponse;
 use SocialConnect\OpenIDConnect\AbstractProvider;
 use SocialConnect\Common\Entity\User;
 use SocialConnect\Common\Hydrator\ObjectMap;
-use SocialConnect\OpenIDConnect\Exception\InvalidJWT;
 use SocialConnect\Common\Http\Client\Client;
-use Exception;
 
 /**
  * Class Provider
- * @package SocialConnect\Google
+ * @package SocialConnect\PixelPin
  */
 class PixelPin extends AbstractProvider
 {
@@ -86,8 +84,6 @@ class PixelPin extends AbstractProvider
         }
 
         $body = $response->getBody();
-
-        //throw new InvalidJWT($body);
 
         $result = json_decode($body);
 
@@ -232,11 +228,10 @@ class PixelPin extends AbstractProvider
             "postal_code" => $postalCode,
             "country" => $country,
         );
-
+		
+		//The reason why we json_encode then json_decode the $newResult array is because $hydrator->hydrate requires a decoded json. 
         $encodeNewResult = json_encode($newResult);
         $decodeNewResult = json_decode($encodeNewResult);
-
-
 
         $hydrator = new ObjectMap(
             [
