@@ -16,7 +16,7 @@ use SocialConnect\Common\Http\Client\Client;
 
 /**
  * Class Provider
- * @package SocialConnect\Google
+ * @package SocialConnect\PixelPin
  */
 class PixelPin extends AbstractProvider
 {
@@ -228,11 +228,10 @@ class PixelPin extends AbstractProvider
             "postal_code" => $postalCode,
             "country" => $country,
         );
-
+		
+		//The reason why we json_encode then json_decode the $newResult array is because $hydrator->hydrate requires a decoded json. 
         $encodeNewResult = json_encode($newResult);
         $decodeNewResult = json_decode($encodeNewResult);
-
-
 
         $hydrator = new ObjectMap(
             [
