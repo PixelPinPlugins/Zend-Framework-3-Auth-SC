@@ -12,9 +12,7 @@ use SocialConnect\Provider\Exception\InvalidResponse;
 use SocialConnect\OpenIDConnect\AbstractProvider;
 use SocialConnect\Common\Entity\User;
 use SocialConnect\Common\Hydrator\ObjectMap;
-use SocialConnect\OpenIDConnect\Exception\InvalidJWT;
 use SocialConnect\Common\Http\Client\Client;
-use Exception;
 
 /**
  * Class Provider
@@ -86,8 +84,6 @@ class PixelPin extends AbstractProvider
         }
 
         $body = $response->getBody();
-
-        //throw new InvalidJWT($body);
 
         $result = json_decode($body);
 

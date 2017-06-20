@@ -11,6 +11,14 @@ use SocialConnect\OpenIDConnect\Exception\UnsupportedSignatureAlgoritm;
 
 class JWT
 {
+	/**
+    * When checking nbf, iat or exp
+    * we provide additional time screw/leeway
+    *
+    * @link https://github.com/SocialConnect/auth/issues/26
+    */
+    public static $screw = 2;
+	
     /**
      * Map of supported algorithms
      *
@@ -70,7 +78,6 @@ class JWT
      */
     public function __construct($token, array $keys)
     {
-        $now = time();
         $parts = explode('.', $token);
         if (count($parts) !== 3) {
             throw new InvalidJWT('Wrong number of segments');
@@ -85,13 +92,6 @@ class JWT
 
         $this->header = json_decode($headerPayload);
 
-        $decodedHeader2 = json_decode($headerPayload);
-
-        //$decodedHeader = implode(",", $decodedHeader2);
-
-        
-        
-
         if ($this->header === null) {
             throw new InvalidJWT('Cannot decode JSON from header');
         }
@@ -102,9 +102,6 @@ class JWT
         }
 
         $this->payload = json_decode($decodedPayload);
-
-        //throw new InvalidJWT($decodedPayload.$now);
-
 
         if ($this->payload === null) {
             throw new InvalidJWT('Cannot decode JSON from payload');
@@ -123,8 +120,6 @@ class JWT
     protected function validate($data, array $keys)
     {
         $now = time();
-
-        $propernow = $now + 2;
 
         if (!isset($this->header->alg)) {
             throw new InvalidJWT('No alg inside header');
@@ -145,9 +140,9 @@ class JWT
          * @link https://tools.ietf.org/html/rfc7519#section-4.1.5
          * "nbf" (Not Before) Claim check
          */
-        if (isset($this->payload->nbf) && $this->payload->nbf > ($propernow)) {
+        if (isset($this->payload->nbf) && $this->payload->nbf > ($now + self::$screw)) {
             throw new InvalidJWT(
-                'nbf (Not Fefore) claim is not valid '.$nbf.' '. $propernow . ' ' . date(DateTime::RFC3339, $this->payload->nbf)
+                'nbf (Not Fefore) claim is not valid '. date(DateTime::RFC3339, $this->payload->nbf)
             );
         }
 
@@ -157,9 +152,9 @@ class JWT
          * @link https://tools.ietf.org/html/rfc7519#section-4.1.6
          * "iat" (Issued At) Claim
          */
-        if (isset($this->payload->iat) && $this->payload->iat > $propernow) {
+        if (isset($this->payload->iat) && $this->payload->iat > ($now + self::$screw)) {
             throw new InvalidJWT(
-                'iat (Issued At) claim is not valid ' .$nbf.' '. $propernow . ' ' . date(DateTime::RFC3339, $this->payload->iat)
+                'iat (Issued At) claim is not valid ' . date(DateTime::RFC3339, $this->payload->iat)
             );
         }
 
@@ -167,9 +162,9 @@ class JWT
          * @link https://tools.ietf.org/html/rfc7519#section-4.1.4
          * "exp" (Expiration Time) Claim
          */
-        if (isset($this->payload->exp) && $now >= $this->payload->exp) {
+        if (isset($this->payload->exp) && ($now - self::$screw) >= $this->payload->exp) {
             throw new InvalidJWT(
-                'exp (Expiration Time) claim is not valid ' . date(DateTime::RFC3339, $this->payload->iat)
+                'exp (Expiration Time) claim is not valid ' . date(DateTime::RFC3339, $this->payload->exp)
             );
         }
     }
